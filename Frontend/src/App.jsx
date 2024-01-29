@@ -8,7 +8,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div>
+    <div className='App'>
       <Routes>
         <Route path="/" Component={Home} />
         <Route path="/chat" Component={Chat} />
