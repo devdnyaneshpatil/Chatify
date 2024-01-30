@@ -1,10 +1,11 @@
 import { Box, Container, Heading, Tab, TabList, TabPanel, TabPanels, Tabs} from "@chakra-ui/react";
 import React from "react";
 import Login from "../components/Login";
+import Signup from "../components/Signup";
 
 function Home() {
   return (
-    <Container maxW={"xl"} centerContent border="1px solid red">
+    <Container maxW={"xl"} centerContent>
       <Box
         border={"1px solid black"}
         mt={"40px"}
@@ -16,17 +17,37 @@ function Home() {
       >
         <Heading>CHATIFY</Heading>
       </Box>
-      <Box w={"100%"} mt={10}>
+      <Box
+        w={"100%"}
+        mt={10}
+        bgGradient="linear(to-r, teal.500, green.500)"
+        p={5}
+        borderRadius={10}
+      >
         <Tabs variant="soft-rounded" colorScheme="blue">
-          <TabList mt={5}>
-            <Tab w={"50%"}>Login</Tab>
-            <Tab w={"50%"}>SignUp</Tab>
+          <TabList mt={5} ml={"5%"}>
+            <Tab
+              w={"45%"}
+              bgGradient="linear(to-r, teal.500, green.500)"
+              _hover={{
+                bgGradient: "linear(to-r, red.500, yellow.500)",
+              }}
+            >
+              Login
+            </Tab>
+            <Tab
+              w={"45%"}
+              bgGradient="linear(to-r, teal.500, green.500)"
+              _hover={{
+                bgGradient: "linear(to-r, red.500, yellow.500)",
+              }}
+            >
+              SignUp
+            </Tab>
           </TabList>
           <TabPanels>
-            <TabPanel border={"2px solid black"} mt={5} >{<Login />}</TabPanel>
-            <TabPanel>
-              <p>two!</p>
-            </TabPanel>
+            <TabPanel mt={5}>{<Login />}</TabPanel>
+            <TabPanel mt={5}>{<Signup />}</TabPanel>
           </TabPanels>
         </Tabs>
       </Box>
