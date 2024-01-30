@@ -56,4 +56,22 @@ const loginUser=async(req,res)=>{
     }
 }
 
-module.exports={registerUser,loginUser}
+const getUser=async(req,res)=>{
+    //console.log(req.user)
+    const keyword=req.query.search?
+        {
+            $or:[
+                {name:{$regex:req.query.search,$options:'i'}},
+                {email:{$regex:req.query.search,$options:'i'}}
+            ]
+        }
+    :{}
+    try {
+       const users=await UserModel.find(keyword).find({_id:{$ne:req.user._id}})
+       res.status(200).json({msg:users})
+    } catch (error) {
+       res.status(400).json({ msg: error.message }); 
+    }
+}
+
+module.exports={registerUser,loginUser,getUser}
