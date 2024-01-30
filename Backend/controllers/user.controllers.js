@@ -20,7 +20,7 @@ const registerUser=async(req,res)=>{
               const newUser= new UserModel({name,email,password:hash,pic})
               newUser.save()
               const token=generateToken(newUser._id)
-              res.status(200).json({msg:"User Hase Been Added Successfully!",newUser,token})
+              res.status(200).json({msg:"User Has Been Added Successfully!",newUser,token})
             });
         }else{
             res.status(200).json({msg:"User Already Exist!"})
