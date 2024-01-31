@@ -58,8 +58,7 @@ function Signup() {
         position: "bottom",
       });
       if(response.data.msg=='User Has Been Added Successfully!'){
-           localStorage.setItem('chatToken',JSON.stringify(response.data.token))
-           localStorage.setItem("userInfo",JSON.stringify(response.data.newUser))
+           localStorage.setItem("userInfo",JSON.stringify(response.data.user))
            navigate('/chat')
       }
     } catch (error) {

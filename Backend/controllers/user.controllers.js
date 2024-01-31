@@ -20,7 +20,18 @@ const registerUser=async(req,res)=>{
               const newUser= new UserModel({name,email,password:hash,pic})
               newUser.save()
               const token=generateToken(newUser._id)
-              res.status(200).json({msg:"User Has Been Added Successfully!",newUser,token})
+              res
+                .status(200)
+                .json({
+                  msg: "User Has Been Added Successfully!",
+                  user: {
+                    _id: newUser._id,
+                    email: newUser.email,
+                    pic: newUser.pic,
+                    name: newUser.name,
+                    token:token
+                  },
+                });
             });
         }else{
             res.status(200).json({msg:"User Already Exist!"})
@@ -43,7 +54,16 @@ const loginUser=async(req,res)=>{
               // result == true
               if(result){
                 const token=generateToken(user._id)
-                res.status(200).json({msg:"Login Successfull",user,token})
+                res.status(200).json({
+                  msg: "Login Successfull",
+                  user: {
+                    _id: user._id,
+                    email: user.email,
+                    pic: user.pic,
+                    name: user.name,
+                    token: token,
+                  },
+                });
               }else{
                 res.status(400).json({msg:"Please Check Your Password"})
               }

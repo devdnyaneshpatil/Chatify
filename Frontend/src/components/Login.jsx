@@ -54,7 +54,6 @@ function Login() {
         isClosable:true
        })
        if (response.data.msg == "Login Successfull") {
-         localStorage.setItem("chatToken", JSON.stringify(response.data.token));
          localStorage.setItem(
            "userInfo",
            JSON.stringify(response.data.user)
