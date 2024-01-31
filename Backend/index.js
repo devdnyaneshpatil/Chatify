@@ -8,11 +8,11 @@ const chatRouter = require("./routes/chat.routes")
 
 const app=express()
 
-app.use(cors())
+app.use(cors()) 
 app.use(express.json())
 app.use('/users',userRouter)
 app.use("/chats",chatRouter)
-app.use(notFound)
+app.use(notFound) 
 app.use(errorHandler)
 app.get('/',(req,res)=>{
     res.send("chatting......")
